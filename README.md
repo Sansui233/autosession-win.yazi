@@ -49,7 +49,7 @@ require("autosession-win"):setup({
 })
 ```
 
-Quit Keymap:
+In `keymap.toml`
 
 ```toml
 [[mgr.prepend_keymap]]
