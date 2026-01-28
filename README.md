@@ -26,15 +26,20 @@ A [Yazi](https://github.com/sxyazi/yazi) autosession plugin: save tab state on e
 > If you also use https://github.com/MasouShizuka/projects.yazi with “auto load on start” / “save before quit” enabled (e.g. `load_after_start` / `update_before_quit`), the two plugins may fight and overwrite each other.
 > Use only one plugin for automatic persistence.
 
-## Installation (git)
+## Installation
 
-Windows Powershell:
+Via Yazi Package Manager
+```
+ya pkg add Sansui233/autosession-win
+```
+
+Or git on Windows Powershell:
 
 ```pwsh
 git clone https://github.com/Sansui233/autosession-win.yazi.git $env:APPDATA\yazi\config\plugins\autosession-win.yazi
 ```
 
-Linux/macOS:
+Or git on Linux/macOS bash:
 
 ```sh
 git clone https://github.com/Sansui233/autosession-win.yazi.git ~/.config/yazi/plugins/autosession-win.yazi
