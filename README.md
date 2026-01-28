@@ -32,6 +32,7 @@ Windows:
 
 ```sh
 git clone https://github.com/Sansui233/autosession-win.yazi.git %AppData%\yazi\config\plugins\autosession-win.yazi
+```
 
 Linux/macOS:
 
