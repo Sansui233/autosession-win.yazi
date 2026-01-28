@@ -28,16 +28,16 @@ A [Yazi](https://github.com/sxyazi/yazi) autosession plugin: save tab state on e
 
 ## Installation (git)
 
+Windows:
+
 ```sh
-# Windows
 git clone https://github.com/Sansui233/autosession-win.yazi.git %AppData%\yazi\config\plugins\autosession-win.yazi
 
-# Linux/macOS
+Linux/macOS:
+
+```sh
 git clone https://github.com/Sansui233/autosession-win.yazi.git ~/.config/yazi/plugins/autosession-win.yazi
 ```
-
-> Plugin name is the folder name:
-> - Folder `autosession-win.yazi` → `require("autosession-win")` and `plugin autosession-win ...`
 
 ## Setup
 
