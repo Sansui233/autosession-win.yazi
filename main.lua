@@ -130,22 +130,22 @@ local function _is_empty_launch()
 	return entries_empty and (not has_cwd_file) and (not has_chooser_file)
 end
 
-local function _normalize_tab_idx(idx, n)
-	if type(idx) ~= "number" then
+local function _clamp_idx0(idx, n)
+	local v = tonumber(idx)
+	if not v then
 		return 0
 	end
+	v = math.floor(v)
 	if type(n) ~= "number" or n <= 0 then
-		return math.max(0, math.floor(idx))
+		return math.max(0, v)
 	end
-
-	idx = math.floor(idx)
-	if idx >= 0 and idx < n then
-		return idx
+	if v < 0 then
+		return 0
 	end
-	if idx >= 1 and idx <= n then
-		return idx - 1
+	if v > (n - 1) then
+		return n - 1
 	end
-	return 0
+	return v
 end
 
 local function _notify(level, msg)
@@ -166,7 +166,8 @@ local function _get_current_session()
 	local tab_count = #tabs
 
 	local session = {
-		active_idx = _normalize_tab_idx(tabs.idx, tab_count),
+		-- Persist the active tab idx as-is, and restore using the same idx value.
+		active_idx = tonumber(tabs.idx) or 0,
 		tabs = {},
 	}
 
@@ -229,8 +230,8 @@ local function _restore_session(state, overwrite)
 		end
 	end
 
-	local active = _normalize_tab_idx(session.active_idx, #session.tabs)
-	ya.emit("tab_switch", { active })
+	local active_idx = _clamp_idx0((tonumber(session.active_idx) or 0) - 1, #session.tabs)
+	ya.emit("tab_switch", { active_idx })
 
 	state.restored = true
 	return true
